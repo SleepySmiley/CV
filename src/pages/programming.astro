@@ -350,15 +350,15 @@ const contacts = [
 			</div>
 
 			<nav aria-label="Main sections" class="fixed inset-x-0 bottom-4 z-30 px-4 sm:px-6">
-				<ul class="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-center gap-3 rounded-4xl border border-white/10 bg-[rgba(75,63,59,0.78)] px-4 py-4 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:flex-nowrap sm:gap-2 sm:px-3">
+				<ul class="mx-auto flex w-full max-w-5xl flex-nowrap items-center justify-start gap-2 overflow-x-auto rounded-4xl border border-white/10 bg-[rgba(75,63,59,0.78)] px-3 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:justify-center sm:gap-2 sm:overflow-visible sm:px-3 sm:py-4">
 					{
 						navigation.map((item) => (
-							<li class="w-full sm:w-auto sm:flex-1">
+							<li class="shrink-0 sm:w-auto sm:flex-1">
 								<a
 									href={item.href}
 									aria-current={item.current ? "page" : undefined}
 									class:list={[
-										"flex items-center justify-center gap-3 rounded-full px-4 py-3 text-sm font-medium transition duration-300",
+										"flex items-center justify-center gap-2 rounded-full px-3 py-2 text-xs font-medium whitespace-nowrap transition duration-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm",
 										item.current
 											? "bg-white text-stone-900 shadow-[0_8px_24px_rgba(255,255,255,0.22)]"
 											: "text-white/92 hover:bg-white/10",
