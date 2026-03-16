@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CursorLight from "../components/CursorLight.astro";
 ---
 
 <html lang="it">
@@ -9,7 +10,8 @@ import "../styles/global.css";
 		<title>Photography | CV Hub</title>
 	</head>
 	<body class="min-h-screen bg-stone-950 px-6 py-12 text-stone-100">
-		<main class="mx-auto flex min-h-[80vh] max-w-4xl flex-col items-start justify-center rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
+		<main class="relative mx-auto flex min-h-[80vh] max-w-4xl flex-col items-start justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
+			<CursorLight />
 			<p class="text-sm uppercase tracking-[0.3em] text-stone-500">03 / Photography</p>
 			<h1 class="mt-4 text-4xl font-semibold text-white">Photography</h1>
 			<p class="mt-4 max-w-2xl text-base leading-8 text-stone-300">

@@ -1,0 +1,104 @@
+<div class="cursor-light" aria-hidden="true"></div>
+
+<script is:inline>
+	(() => {
+		const script = document.currentScript;
+		const light = script?.previousElementSibling;
+		const root = light?.parentElement;
+		const desktopPointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+		if (!light || !root || !desktopPointer.matches) {
+			return;
+		}
+
+		root.style.setProperty("--cursor-x", "50%");
+		root.style.setProperty("--cursor-y", "50%");
+		root.style.setProperty("--cursor-active", "0");
+
+		const updateCursorLight = (event) => {
+			const rect = root.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
+			root.style.setProperty("--cursor-x", `${x}px`);
+			root.style.setProperty("--cursor-y", `${y}px`);
+			root.style.setProperty("--cursor-active", "1");
+		};
+
+		root.addEventListener("pointerenter", updateCursorLight);
+		root.addEventListener("pointermove", updateCursorLight);
+		root.addEventListener("pointerleave", () => {
+			root.style.setProperty("--cursor-active", "0");
+		});
+	})();
+</script>
+
+<style is:global>
+	.cursor-light {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: min(18rem, 24vw);
+		aspect-ratio: 1;
+		border-radius: 999px;
+		pointer-events: none;
+		opacity: calc(var(--cursor-active, 0) * 0.58);
+		background: radial-gradient(
+			ellipse at center,
+			rgba(255, 245, 227, 0.14) 0%,
+			rgba(255, 218, 173, 0.08) 26%,
+			rgba(255, 178, 120, 0.04) 48%,
+			rgba(255, 178, 120, 0) 76%
+		);
+		transform: translate3d(calc(var(--cursor-x, 50%) - 50%), calc(var(--cursor-y, 50%) - 50%), 0);
+		filter: blur(14px);
+		mix-blend-mode: screen;
+		transition:
+			opacity 180ms ease,
+			transform 180ms ease-out;
+		will-change: transform, opacity;
+		z-index: 0;
+	}
+
+	.cursor-light::before {
+		content: "";
+		position: absolute;
+		inset: -10%;
+		border-radius: inherit;
+		-webkit-backdrop-filter: blur(9px) saturate(108%);
+		backdrop-filter: blur(9px) saturate(108%);
+		-webkit-mask-image: radial-gradient(
+			ellipse at center,
+			rgba(0, 0, 0, 0.86) 0%,
+			rgba(0, 0, 0, 0.6) 34%,
+			rgba(0, 0, 0, 0.2) 58%,
+			transparent 80%
+		);
+		mask-image: radial-gradient(
+			ellipse at center,
+			rgba(0, 0, 0, 0.86) 0%,
+			rgba(0, 0, 0, 0.6) 34%,
+			rgba(0, 0, 0, 0.2) 58%,
+			transparent 80%
+		);
+	}
+
+	.cursor-light::after {
+		content: "";
+		position: absolute;
+		inset: 10%;
+		border-radius: inherit;
+		background: radial-gradient(
+			ellipse at center,
+			rgba(255, 251, 242, 0.11) 0%,
+			rgba(255, 244, 226, 0.05) 34%,
+			transparent 74%
+		);
+		filter: blur(18px);
+	}
+
+	@media (hover: none), (pointer: coarse) {
+		.cursor-light {
+			display: none;
+		}
+	}
+</style>
