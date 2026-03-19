@@ -321,10 +321,51 @@ const contacts = [
 												Direct Play
 											</span>
 										</div>
-										<audio controls preload="none" class="beat-audio-player w-full">
-											<source src={project.audioUrl} type="audio/mpeg" />
-											Il tuo browser non supporta il player audio.
-										</audio>
+										<div class="beat-player" data-audio-player>
+											<button
+												type="button"
+												class="beat-player-toggle"
+												data-audio-toggle
+												aria-label="Riproduci beat"
+											>
+												<svg
+													data-audio-play-icon
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="ml-0.5 h-4 w-4 fill-current"
+												>
+													<path d="M8.25 6.75v10.5L17.25 12 8.25 6.75Z"></path>
+												</svg>
+												<svg
+													data-audio-pause-icon
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="hidden h-4 w-4 fill-current"
+												>
+													<path d="M8.25 6.75h3v10.5h-3zM12.75 6.75h3v10.5h-3z"></path>
+												</svg>
+											</button>
+											<div class="beat-player-track-wrap">
+												<input
+													type="range"
+													min="0"
+													max="100"
+													value="0"
+													step="0.1"
+													class="beat-player-track"
+													data-audio-seek
+													aria-label="Avanza beat"
+												/>
+												<div class="beat-player-times">
+													<span data-audio-current>0:00</span>
+													<span data-audio-duration>0:00</span>
+												</div>
+											</div>
+											<audio preload="metadata" data-audio-element>
+												<source src={project.audioUrl} type="audio/mpeg" />
+												Il tuo browser non supporta il player audio.
+											</audio>
+										</div>
 									</div>
 								</article>
 							))
@@ -502,32 +543,249 @@ const contacts = [
 		}
 	}
 
-	.beat-audio-player {
-		height: 42px;
+	.beat-player {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 0.9rem;
+		align-items: center;
+	}
+
+	.beat-player audio {
+		display: none;
+	}
+
+	.beat-player-toggle {
+		display: inline-flex;
+		height: 2.8rem;
+		width: 2.8rem;
+		align-items: center;
+		justify-content: center;
 		border-radius: 999px;
-		overflow: hidden;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		background: linear-gradient(135deg, rgba(255, 243, 224, 0.94), rgba(253, 186, 116, 0.88));
+		color: rgba(41, 21, 8, 0.92);
+		box-shadow:
+			0 10px 24px rgba(249, 115, 22, 0.18),
+			inset 0 1px 0 rgba(255, 255, 255, 0.28);
+		transition:
+			transform 180ms ease,
+			box-shadow 180ms ease,
+			filter 180ms ease;
+	}
+
+	.beat-player-toggle:hover {
+		transform: translateY(-1px);
+		box-shadow:
+			0 14px 28px rgba(249, 115, 22, 0.24),
+			inset 0 1px 0 rgba(255, 255, 255, 0.36);
+		filter: brightness(1.02);
+	}
+
+	.beat-player-toggle svg {
+		height: 1.8rem;
+		width: 1.8rem;
+	}
+
+	.beat-player-track-wrap {
+		display: grid;
+		gap: 0.42rem;
+		min-width: 0;
+	}
+
+	.beat-player-track {
+		-webkit-appearance: none;
+		appearance: none;
 		width: 100%;
-		background: rgba(255, 255, 255, 0.08);
-		filter: sepia(0.16) hue-rotate(-8deg) saturate(1.12) brightness(1.04);
+		height: 0.52rem;
+		border-radius: 999px;
+		background:
+			linear-gradient(
+				90deg,
+				rgba(255, 230, 201, 0.95) 0%,
+				rgba(255, 187, 112, 0.92) var(--beat-progress, 0%),
+				rgba(255, 255, 255, 0.09) var(--beat-progress, 0%),
+				rgba(255, 255, 255, 0.09) 100%
+			);
+		outline: none;
+		cursor: pointer;
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 	}
 
-	.beat-audio-player::-webkit-media-controls-panel {
-		background: linear-gradient(135deg, rgba(214, 116, 67, 0.94), rgba(244, 164, 96, 0.94));
+	.beat-player-track::-webkit-slider-runnable-track {
+		-webkit-appearance: none;
+		height: 0.52rem;
+		border-radius: 999px;
+		background: transparent;
 	}
 
-	.beat-audio-player::-webkit-media-controls-play-button,
-	.beat-audio-player::-webkit-media-controls-mute-button {
-		filter: sepia(0.14) saturate(1.15) hue-rotate(-6deg) brightness(1.08);
+	.beat-player-track::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		margin-top: -4.7px;
+		height: 1.1rem;
+		width: 1.1rem;
+		border-radius: 999px;
+		border: 2px solid rgba(255, 245, 232, 0.95);
+		background: linear-gradient(135deg, rgba(255, 242, 224, 1), rgba(251, 191, 36, 0.92));
+		box-shadow:
+			0 0 0 4px rgba(251, 191, 36, 0.08),
+			0 8px 18px rgba(249, 115, 22, 0.28);
 	}
 
-	.beat-audio-player::-webkit-media-controls-current-time-display,
-	.beat-audio-player::-webkit-media-controls-time-remaining-display {
-		color: #fff7ed;
-		text-shadow: none;
+	.beat-player-track::-moz-range-track {
+		height: 0.52rem;
+		border: 0;
+		border-radius: 999px;
+		background: transparent;
 	}
 
-	.beat-audio-player::-webkit-media-controls-timeline,
-	.beat-audio-player::-webkit-media-controls-volume-slider {
-		filter: sepia(0.18) saturate(1.15) hue-rotate(-6deg) brightness(1.04);
+	.beat-player-track::-moz-range-thumb {
+		height: 1.1rem;
+		width: 1.1rem;
+		border: 2px solid rgba(255, 245, 232, 0.95);
+		border-radius: 999px;
+		background: linear-gradient(135deg, rgba(255, 242, 224, 1), rgba(251, 191, 36, 0.92));
+		box-shadow:
+			0 0 0 4px rgba(251, 191, 36, 0.08),
+			0 8px 18px rgba(249, 115, 22, 0.28);
+	}
+
+	.beat-player-times {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.72rem;
+		letter-spacing: 0.06em;
+		color: rgba(214, 211, 209, 0.78);
+	}
+
+	@media (max-width: 520px) {
+		.beat-player {
+			grid-template-columns: 1fr;
+		}
+
+		.beat-player-toggle {
+			height: 2.65rem;
+			width: 2.65rem;
+		}
 	}
 </style>
+
+<script>
+	const formatBeatTime = (seconds: number) => {
+		if (!Number.isFinite(seconds) || seconds < 0) {
+			return "0:00";
+		}
+
+		const mins = Math.floor(seconds / 60);
+		const secs = Math.floor(seconds % 60)
+			.toString()
+			.padStart(2, "0");
+		return `${mins}:${secs}`;
+	};
+
+	const players = Array.from(document.querySelectorAll("[data-audio-player]"));
+
+	players.forEach((player) => {
+		const audio = player.querySelector("[data-audio-element]");
+		const toggle = player.querySelector("[data-audio-toggle]");
+		const seek = player.querySelector("[data-audio-seek]");
+		const currentLabel = player.querySelector("[data-audio-current]");
+		const durationLabel = player.querySelector("[data-audio-duration]");
+		const playIcon = player.querySelector("[data-audio-play-icon]");
+		const pauseIcon = player.querySelector("[data-audio-pause-icon]");
+
+		if (!(audio instanceof HTMLAudioElement) || !(seek instanceof HTMLInputElement) || !(toggle instanceof HTMLButtonElement)) {
+			return;
+		}
+
+		let isScrubbing = false;
+
+		const setProgress = (value: number) => {
+			const safeValue = Number.isFinite(value) ? Math.max(0, Math.min(100, value)) : 0;
+			seek.value = `${safeValue}`;
+			seek.style.setProperty("--beat-progress", `${safeValue}%`);
+		};
+
+		const syncIcons = () => {
+			const playing = !audio.paused;
+			playIcon?.classList.toggle("hidden", playing);
+			pauseIcon?.classList.toggle("hidden", !playing);
+			toggle.setAttribute("aria-label", playing ? "Metti in pausa il beat" : "Riproduci il beat");
+		};
+
+		const syncTime = () => {
+			if (!isScrubbing && audio.duration) {
+				setProgress((audio.currentTime / audio.duration) * 100);
+			}
+			if (currentLabel) {
+				currentLabel.textContent = formatBeatTime(audio.currentTime);
+			}
+		};
+
+		const syncDuration = () => {
+			if (durationLabel) {
+				durationLabel.textContent = formatBeatTime(audio.duration);
+			}
+		};
+
+		const scrubToValue = () => {
+			if (!audio.duration) {
+				return;
+			}
+			audio.currentTime = (Number(seek.value) / 100) * audio.duration;
+			syncTime();
+		};
+
+		setProgress(0);
+		syncIcons();
+		syncDuration();
+		syncTime();
+
+		toggle.addEventListener("click", () => {
+			if (audio.paused) {
+				players.forEach((otherPlayer) => {
+					const otherAudio = otherPlayer.querySelector("[data-audio-element]");
+					if (otherAudio instanceof HTMLAudioElement && otherAudio !== audio) {
+						otherAudio.pause();
+					}
+				});
+				void audio.play();
+			} else {
+				audio.pause();
+			}
+		});
+
+		audio.addEventListener("play", syncIcons);
+		audio.addEventListener("pause", syncIcons);
+		audio.addEventListener("loadedmetadata", () => {
+			syncDuration();
+			syncTime();
+		});
+		audio.addEventListener("timeupdate", syncTime);
+		audio.addEventListener("ended", () => {
+			isScrubbing = false;
+			setProgress(0);
+			syncIcons();
+			syncTime();
+		});
+
+		seek.addEventListener("input", () => {
+			isScrubbing = true;
+			setProgress(Number(seek.value));
+			scrubToValue();
+		});
+
+		seek.addEventListener("change", () => {
+			scrubToValue();
+			isScrubbing = false;
+		});
+
+		seek.addEventListener("pointerup", () => {
+			scrubToValue();
+			isScrubbing = false;
+		});
+	});
+</script>

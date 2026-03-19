@@ -58,9 +58,11 @@ const navigation = [
 	<body class="min-h-screen bg-[#121118] text-stone-100">
 		<main class="relative isolate min-h-screen overflow-hidden">
 			<div class="absolute inset-0 -z-30 bg-[linear-gradient(120deg,#121118_0%,#17151d_28%,#2d2523_56%,#17131b_100%)]"></div>
-			<div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_67%_32%,rgba(255,140,56,0.90),rgba(255,140,56,0.28)_18%,rgba(255,140,56,0.0)_40%),radial-gradient(circle_at_86%_28%,rgba(255,243,224,0.42),rgba(255,243,224,0.0)_28%),radial-gradient(circle_at_26%_58%,rgba(255,255,255,0.12),rgba(255,255,255,0.0)_34%)]"></div>
+			<div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_66%_32%,rgba(255,140,56,0.84),rgba(255,140,56,0.28)_18%,rgba(255,140,56,0.0)_40%),radial-gradient(circle_at_82%_24%,rgba(255,243,224,0.38),rgba(255,243,224,0.0)_26%),radial-gradient(circle_at_18%_22%,rgba(255,216,170,0.10),rgba(255,216,170,0.0)_18%),radial-gradient(circle_at_24%_56%,rgba(255,255,255,0.08),rgba(255,255,255,0.0)_22%),radial-gradient(circle_at_36%_40%,rgba(255,166,89,0.12),rgba(255,166,89,0.0)_18%),radial-gradient(circle_at_16%_78%,rgba(255,210,184,0.08),rgba(255,210,184,0.0)_18%),radial-gradient(circle_at_56%_78%,rgba(255,184,116,0.10),rgba(255,184,116,0.0)_18%),radial-gradient(circle_at_84%_68%,rgba(248,120,52,0.14),rgba(248,120,52,0.0)_20%)]"></div>
 			<div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(6,6,9,0.95)_0%,rgba(8,8,12,0.82)_28%,rgba(8,8,12,0.34)_56%,rgba(8,8,12,0.08)_78%,rgba(8,8,12,0.0)_100%)]"></div>
 			<div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-size-[82px_82px] opacity-25"></div>
+			<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(255,241,222,0.12),rgba(255,241,222,0.0)_10%),radial-gradient(circle_at_34%_38%,rgba(255,171,94,0.10),rgba(255,171,94,0.0)_14%),radial-gradient(circle_at_22%_72%,rgba(255,198,145,0.08),rgba(255,198,145,0.0)_12%),radial-gradient(circle_at_62%_62%,rgba(255,181,122,0.08),rgba(255,181,122,0.0)_14%),radial-gradient(circle_at_82%_22%,rgba(255,255,255,0.07),rgba(255,255,255,0.0)_12%)] blur-3xl"></div>
+			<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_14%_26%,rgba(255,194,132,0.16),rgba(255,194,132,0.0)_12%),radial-gradient(circle_at_42%_54%,rgba(255,150,74,0.10),rgba(255,150,74,0.0)_12%),radial-gradient(circle_at_28%_84%,rgba(255,173,112,0.08),rgba(255,173,112,0.0)_12%),radial-gradient(circle_at_76%_20%,rgba(255,244,228,0.10),rgba(255,244,228,0.0)_10%),radial-gradient(circle_at_88%_72%,rgba(255,166,89,0.10),rgba(255,166,89,0.0)_12%)] blur-[92px] opacity-95"></div>
 			<CursorLight />
 
 			<div class="relative z-10 flex min-h-screen w-full flex-col px-6 py-6 sm:px-10 sm:py-8 lg:px-14 lg:py-10 xl:px-20">
@@ -312,8 +314,9 @@ const navigation = [
 		inset: 8% 6% 8%;
 		background:
 			radial-gradient(circle at var(--photo-focus-x) var(--photo-focus-y), rgba(255, 166, 89, 0.88) 0%, rgba(255, 166, 89, 0.42) 20%, rgba(255, 166, 89, 0) 56%),
-			radial-gradient(circle at calc(var(--photo-focus-x) + 8%) calc(var(--photo-focus-y) - 6%), rgba(255, 240, 221, 0.44) 0%, rgba(255, 240, 221, 0) 30%);
-		filter: blur(46px);
+			radial-gradient(circle at calc(var(--photo-focus-x) + 8%) calc(var(--photo-focus-y) - 6%), rgba(255, 240, 221, 0.44) 0%, rgba(255, 240, 221, 0) 30%),
+			radial-gradient(circle at calc(var(--photo-focus-x) - 18%) calc(var(--photo-focus-y) + 18%), rgba(255, 186, 128, 0.22) 0%, rgba(255, 186, 128, 0) 28%);
+		filter: blur(52px);
 		z-index: -2;
 	}
 
