@@ -1,25 +1,231 @@
 ---
 import "../styles/global.css";
 import CursorLight from "../components/CursorLight.astro";
----
 
+
+const navigation = [
+	{ href: "/", label: "Home", current: false },
+	{ href: "/programming", label: "Programming", current: false },
+	{ href: "/beatmaking", label: "Beatmaking", current: false },
+	{ href: "/photography", label: "Photography", current: true },
+	{ href: "/me", label: "Me", current: false },
+];
+---
 <html lang="it">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>Photography | CV Hub</title>
+		<meta
+			name="description"
+			content="Beatmaking page di Christian Mattiolo: produzione, FL Studio, capacita, progetti e contatti."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Christian Mattiolo | Photography</title>
 	</head>
-	<body class="min-h-screen bg-stone-950 px-6 py-12 text-stone-100">
-		<main class="relative mx-auto flex min-h-[80vh] max-w-4xl flex-col items-start justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur">
+	<body class="min-h-screen bg-[#0e0b12] text-stone-100">
+		<main class="relative isolate overflow-hidden pb-36">
+			<div class="absolute inset-0 -z-30 bg-[linear-gradient(140deg,#0e0b12_0%,#15111b_34%,#21161d_62%,#0e0b12_100%)]"></div>
+			<div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_74%_18%,rgba(255,128,54,0.30),rgba(255,128,54,0.0)_28%),radial-gradient(circle_at_20%_78%,rgba(236,72,153,0.14),rgba(236,72,153,0.0)_24%),radial-gradient(circle_at_58%_34%,rgba(251,191,36,0.14),rgba(251,191,36,0.0)_18%),radial-gradient(circle_at_88%_54%,rgba(249,115,22,0.12),rgba(249,115,22,0.0)_20%),radial-gradient(circle_at_12%_24%,rgba(244,114,182,0.10),rgba(244,114,182,0.0)_18%)]"></div>
+			<div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[84px_84px] opacity-15"></div>
+			<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_64%_20%,rgba(255,244,214,0.12),rgba(255,244,214,0.0)_12%),radial-gradient(circle_at_30%_60%,rgba(255,160,122,0.08),rgba(255,160,122,0.0)_14%),radial-gradient(circle_at_82%_72%,rgba(253,186,116,0.08),rgba(253,186,116,0.0)_16%)] blur-2xl"></div>
 			<CursorLight />
-			<p class="text-sm uppercase tracking-[0.3em] text-stone-500">03 / Photography</p>
-			<h1 class="mt-4 text-4xl font-semibold text-white">Photography</h1>
-			<p class="mt-4 max-w-2xl text-base leading-8 text-stone-300">
-				Questa sezione arrivera dopo. Per ora la HUB page e pronta e questo link e gia funzionante.
-			</p>
-			<a href="/" class="mt-8 rounded-full border border-white/10 px-5 py-3 text-sm text-stone-200 transition hover:border-amber-200/40 hover:text-white">
-				Torna alla HUB
-			</a>
+
+			
+
+			<div class="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-10 sm:py-8 lg:px-14 lg:py-10">
+				<header class="flex items-center justify-start">
+					<a
+						href="/"
+						class="inline-flex items-center gap-3 text-sm font-medium text-white/90"
+						style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;"
+					>
+						<span class="h-2.5 w-2.5 rounded-full bg-orange-300 shadow-[0_0_18px_rgba(253,186,116,0.95)]"></span>
+						<span>Christian Mattiolo / Photography</span>
+					</a>
+				</header>
+
+				<section class="grid flex-1 gap-10 py-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.72fr)] lg:items-center lg:gap-12 lg:py-12">
+					<div class="max-w-3xl">
+						<p
+							class="text-sm font-semibold uppercase tracking-[0.22em] text-orange-300"
+							style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;"
+						>
+							03 / Photography
+						</p>
+						<h1
+							class="mt-5 text-5xl font-bold leading-[0.94] tracking-tight text-white sm:text-6xl xl:text-[5.25rem]"
+							style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;"
+						>
+							Photographer
+							<span class="block text-stone-300">and Editor</span>
+						</h1>
+						<p class="mt-6 max-w-2xl text-base leading-8 text-stone-300 sm:text-lg">
+							La fotografia è una delle mie passioni che ho sviluppato quando avevo 15 anni, ho imparato a cercare gli scatti migliori e a Editare le immmagini per rappresentare la mia visione artistica.
+						</p>
+
+						<div class="mt-8 flex flex-wrap gap-3">
+							<a
+								href="mailto:christianmattiolo@gmail.com"
+								class="rounded-full bg-orange-400 px-5 py-3 text-sm font-semibold text-stone-950 shadow-[0_12px_32px_rgba(249,115,22,0.28)] transition hover:-translate-y-0.5 hover:bg-orange-300"
+								style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;"
+							>
+								Contattami
+							</a>
+						</div>
+					</div>
+
+					<div class="grid gap-4 rounded-4xl border border-white/10 bg-white/6 p-6 shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+						<div class="grid gap-2">
+							<p
+								class="text-[0.72rem] uppercase tracking-[0.22em] text-stone-500"
+								style="font-family: 'IBM Plex Mono', monospace;"
+							>
+								Quick Profile
+							</p>
+							<p class="text-2xl font-semibold text-white" style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;">
+								Christian Mattiolo
+							</p>
+							<p class="text-sm leading-7 text-stone-300">
+								Creo scatti artistici prevalentemente immortalando paesaggi e ritratti.
+							</p>
+						</div>
+
+						<div class="grid gap-3 border-t border-white/10 pt-4 text-sm text-stone-300">
+							<div class="flex items-center justify-between gap-4">
+								<span class="text-stone-500">Main software</span>
+								<span>Adobe Lightroom</span>
+							</div>
+							<div class="flex items-center justify-between gap-4">
+								<span class="text-stone-500">Focus</span>
+								<span>Photography / Editing</span>
+							</div>
+							<div class="flex items-center justify-between gap-4">
+								<span class="text-stone-500">Location</span>
+								<span>Mercato Saraceno, IT</span>
+							</div>
+						</div>
+
+						<div class="border-t border-white/10 pt-4">
+							<p
+								class="text-[0.72rem] uppercase tracking-[0.22em] text-stone-500"
+								style="font-family: 'IBM Plex Mono', monospace;"
+							>
+								Direction
+							</p>
+							<p class="mt-4 text-sm leading-7 text-stone-200">
+								Mi piace creare foto che trasmettano un emozione e un idea piuttosto che la semplice qualità dell'immagine in se. 
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+			<nav aria-label="Main sections" class="fixed inset-x-0 bottom-4 z-30 px-4 sm:px-6">
+				<ul class="mx-auto flex w-full max-w-5xl flex-nowrap items-center justify-start gap-2 overflow-x-auto rounded-4xl border border-white/10 bg-[rgba(75,63,59,0.78)] px-3 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:justify-center sm:gap-2 sm:overflow-visible sm:px-3 sm:py-4">
+					{
+						navigation.map((item) => (
+							<li class="shrink-0 sm:w-auto sm:flex-1">
+								<a
+									href={item.href}
+									aria-current={item.current ? "page" : undefined}
+									class:list={[
+										"flex items-center justify-center gap-2 rounded-full px-3 py-2 text-xs font-medium whitespace-nowrap transition duration-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm",
+										item.current
+											? "bg-white text-stone-900 shadow-[0_8px_24px_rgba(255,255,255,0.22)]"
+											: "text-white/92 hover:bg-white/10",
+									]}
+									style="font-family: 'Space Grotesk', 'Segoe UI', sans-serif;"
+								>
+									<span class={item.current ? "text-stone-700" : "text-white/80"}>
+										{
+											item.label === "Home" && (
+												<svg
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="h-4 w-4 fill-none stroke-current"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<path d="M3.75 10.5 12 4.5l8.25 6"></path>
+													<path d="M6 9.75v9h12v-9"></path>
+												</svg>
+											)
+										}
+										{
+											item.label === "Programming" && (
+												<svg
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="h-4 w-4 fill-none stroke-current"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<rect x="4.5" y="5.25" width="15" height="13.5" rx="2"></rect>
+													<path d="m9 10.25-2 1.75 2 1.75"></path>
+													<path d="m15 10.25 2 1.75-2 1.75"></path>
+												</svg>
+											)
+										}
+										{
+											item.label === "Beatmaking" && (
+												<svg
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="h-4 w-4 fill-none stroke-current"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<path d="M7.5 18V8.25"></path>
+													<path d="M12 18V5.25"></path>
+													<path d="M16.5 18v-7.5"></path>
+												</svg>
+											)
+										}
+										{
+											item.label === "Photography" && (
+												<svg
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="h-4 w-4 fill-none stroke-current"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<path d="M4.5 8.25h4l1.5-2.25h4l1.5 2.25h4v9.75a2.25 2.25 0 0 1-2.25 2.25h-11A2.25 2.25 0 0 1 4.5 18V8.25Z"></path>
+													<circle cx="12" cy="13.5" r="3"></circle>
+												</svg>
+											)
+										}
+										{
+											item.label === "Me" && (
+												<svg
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+													class="h-4 w-4 fill-none stroke-current"
+													stroke-width="1.8"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<circle cx="12" cy="8.25" r="3"></circle>
+													<path d="M6.75 18.75a5.25 5.25 0 0 1 10.5 0"></path>
+												</svg>
+											)
+										}
+									</span>
+									<span>{item.label}</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
 		</main>
 	</body>
 </html>
